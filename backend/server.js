@@ -9,6 +9,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/stats', async(req, res) => {
+    try {
+        const total = await pool.query("SELECT COUNT(*) FROM stud");
+        const males = await pool.query("SELECT COUNT(*) FROM stud WHERE gender='Male'");
+        const females =await pool.query("SELECT COUNT(*) FROM stud WHERE gender='Female'");
+
+        res.json({
+            total: total.rows[0].count,
+            males: males.rows[0].count,
+            females: females.rows[0].count
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            error: 'error fetching data'
+        });
+        
+    }
+})
+
 app.get('/record', async (req, res) => {
     const student = await pool.connect();
     try {

@@ -57,7 +57,7 @@ const Dashboard = () => {
             <UserRound size={30} />
           </div>
         </div>
-        <div className="bg-white p-6 shadow rounded w-fit flex">
+        <div className="bg-white p-6 shadow rounded w-full flex justify-between items-center">
           <PieChart width={300} height={300}>
             <Pie
               data={data}

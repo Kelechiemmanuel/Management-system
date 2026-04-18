@@ -7,40 +7,38 @@ const StudentTable = ({ students, fetchStudents, setEditingStudent }) => {
         fetchStudents();
     };
     return (
-        <table className='flex flex-col'>
-            <thead>
-                <tr className='flex justify-between items-center gap-10 p-5 w-full border border-amber-400'>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Level</th>
-                    <th>Gender</th>
-                    <th>Action</th>
+
+        <table className="w-full">
+            <thead >
+                <tr className="bg-blue-500 text-white">
+                    <th className="py-2 px-4 border">Name</th>
+                    <th className="py-2 px-4 border">Age</th>
+                    <th className="py-2 px-4 border">Level</th>
+                    <th className="py-2 px-4 border">Gender</th>
+                    <th className="py-2 px-4 border">Action</th>
                 </tr>
             </thead>
-
-            <tbody>
+            <tbody className=''>
                 {students.map((s) => (
-                    <tr key={s.id} className='flex justify-between items-center p-5 w-full border border-amber-400'>
+                    <tr key={s.id} className="text-center hover:text-white hover:bg-blue-400">
+                        <td className="py-2 px-4 border">{s.name}</td>
+                        <td className="py-2 px-4 border">{s.age}</td>
+                        <td className="py-2 px-4 border">{s.level}</td>
+                        <td className="py-2 px-4 border">{s.gender}</td>
 
-                        <td>{s.name}</td>
-                        <td>{s.age}</td>
-                        <td>{s.level}</td>
-                        <td>{s.gender}</td>
 
-                        <td>
-                            <button onClick={() => setEditingStudent(s)}>
+                        <td className='py-2 px-4 flex justify-center gap-10 bg-blue-500 text-white'>
+                            <button className='border-0 cursor-pointer' onClick={() => setEditingStudent(s)}>
                                 Edit
                             </button>
 
-                            <button onClick={() => handleDelete(s.id)}>
+                            <button className='border-0 cursor-pointer' onClick={() => handleDelete(s.id)}>
                                 Delete
                             </button>
                         </td>
-
                     </tr>
                 ))}
             </tbody>
-
         </table>
     )
 }
